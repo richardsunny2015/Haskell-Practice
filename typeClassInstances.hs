@@ -23,6 +23,5 @@ instance Numberish Year where
 sumNumberish :: Numberish a => a -> a -> a
 sumNumberish a a' = fromNumber summed
     where integerOfA      = toNumber a
-    where integerOfAPrime = toNumber a'
-    summed = integerOfA + integerOfAPrime
- 
+          integerOfAPrime = toNumber a'
+          summed = integerOfA + integerOfAPrime
