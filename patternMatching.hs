@@ -37,6 +37,10 @@ head' :: [a] -> a
 head' [] = error "Can't call 'head' on empty list"
 head' (x : _) = x
 
+head'' :: [a] -> a
+head'' xs = case xs of [] -> error "No head for empty lists!"
+                       (x:_) -> x
+
 tell :: (Show a) => [a] -> String 
 tell [] = "The list is empty"
 tell (x:[]) = "The list has one element: " ++ show x
@@ -106,3 +110,30 @@ initials :: String -> String -> String
 initials firstName lastName = [f] ++ ". " ++ [l] ++ "."
     where (f:_) = firstName
           (l:_) = lastName
+
+calcBmis :: [(Double, Double)] -> [Double]
+calcBmis xs = [bmi w h | (w, h) <- xs]
+    where bmi weight height = weight / height ^ 2
+
+calcBmis' :: [(Double, Double)] -> [Double]
+calcBmis' xs = [bmi | (w, h) <- xs, let bmi = w / h ^ 2]
+
+calcBmis'' :: [(Double, Double)] -> [Double]
+calcBmis'' xs = [bmi | (w, h) <- xs, let bmi = w / h ^ 2, bmi > 25.0]
+
+cylinder :: Double -> Double -> Double
+cylinder r h =
+    let sideArea = 2 * pi * r * h
+        topArea = pi * r ^ 2
+    in sideArea + 2 * topArea
+
+describeList :: [a] -> String
+describeList ls = "The list is " ++ case ls of [] -> "empty."
+                                               [x] -> "a singleton list."
+                                               xs -> "a longer list."
+
+describeList' :: [a] -> String
+describeList' ls = "The list is " ++ what ls
+    where what [] = "empty."
+          what [x] = "a singleton list."
+          what xs = "a longer list."
