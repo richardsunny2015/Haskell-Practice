@@ -12,3 +12,6 @@ f l = reverse (f' l [])
 
 averageList [] = error "Can't find average of an empty list"
 averageList list = (sum list) `div` (length list)
+
+middleElem [] = error "Cannot find middle element of an empty list"
+middleElem list = list !! ((length list - 1) `div` 2)
