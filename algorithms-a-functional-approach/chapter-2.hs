@@ -22,3 +22,5 @@ middleElem list = list !! ((length list - 1) `div` 2)
     -- | otherwise = neg xs
 neg list = length [x | x <- list, x < 0]
 
+rep 0 = []
+rep n = rep (n - 1) ++ [x | x <- take n (repeat n)]
