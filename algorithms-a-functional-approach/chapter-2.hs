@@ -9,3 +9,6 @@ fact n
 f l = reverse (f' l [])
     where f' [] r = r
           f' (x:xs) r = (2 * x) : (f' xs r)
+
+averageList [] = error "Can't find average of an empty list"
+averageList list = (sum list) `div` (length list)
