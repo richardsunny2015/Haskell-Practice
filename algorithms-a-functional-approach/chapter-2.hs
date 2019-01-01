@@ -16,7 +16,9 @@ averageList list = (sum list) `div` (length list)
 middleElem [] = error "Cannot find middle element of an empty list"
 middleElem list = list !! ((length list - 1) `div` 2)
 
-neg [] = 0
-neg (x:xs)
-    | x < 0     = 1 + neg xs
-    | otherwise = neg xs
+-- neg [] = 0
+-- neg (x:xs)
+    -- | x < 0     = 1 + neg xs
+    -- | otherwise = neg xs
+neg list = length [x | x <- list, x < 0]
+
